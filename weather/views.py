@@ -10,7 +10,8 @@ from django.urls import reverse
 
 
 def index(request):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=4f69f858487854fe17c91d40b231a3ab'
+    #appid = yours api key form openweathermap
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid='
     err_msg = ''
     ok_msg = ''
     
