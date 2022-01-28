@@ -1,0 +1,86 @@
+{% extends 'weather/layout.html' %}
+
+{% block title %}
+Weather
+{% endblock title %}
+
+{% block content %}
+<br>
+{% if ok_msg %}
+<div class="d-flex justify-content-center">
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ok_msg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+{% endif %}
+{% if err_msg %}
+<div class="d-flex justify-content-center">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{err_msg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+{% endif %}
+<center>
+  <br>
+  <div class="d-flex justify-content-center">
+    <div class="width">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+          {{form.name}}
+          <label for="floatingInput">City Name</label>
+        </div>
+        <input type="submit" value="Find" class=" btn btn-info">
+      </form>
+    </div>
+  </div>
+  <br>
+  {% for city_weather in weather_data  %}
+  <div class="card mb-2" style="max-width:540px;">
+    <div class="shadow p-2 mb-0 bg-body rounded">
+      <div class="row g-1">
+        <div class="col-md-3">
+
+          <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" class="img-fluid rounded-start"
+            alt="..." width=450>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="d-flex justify-content-end">
+              <a class="btn-close" href="{% url 'delete' city_weather.city %}"></a>
+            </div>
+            <h1 class="card-title">{{ city_weather.city }}</h1>
+            <hr>
+            <p class="card-text"> Temp : {{ city_weather.temperature }}° C <br>
+              Feels like : {{ city_weather.feels_like }}° C </p>
+            <hr>
+            <p class="card-text"> Wind : {{ city_weather.wind }} Km, {{ city_weather.wind1 }}° </p>
+            <hr>
+            <p class="card-text"><small>{{ city_weather.description }}</small></p>
+            <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Full Info
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                <li>Coordination - {{city_weather.coord_lon}}, {{city_weather.coord_lat}}</li>
+                <hr class="dropdown-divider">
+                <li>Pressure - {{city_weather.pressure}} hPa</li>
+                <hr class="dropdown-divider">
+                <li>Temperature - min: {{city_weather.temp_max}}° C , max: {{city_weather.temp_max}}° C </li>
+                <hr class="dropdown-divider">
+                <li>Visibility - {{city_weather.visibility}}</li>
+                <hr class="dropdown-divider">
+                <li>Clouds - {{city_weather.clouds}}</li>
+              </ul>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</center>
+{% endblock content %}

@@ -1,0 +1,41 @@
+.col-md-8 {
+    text-align: left;
+}
+
+.btn:hover {
+    box-shadow: 0 0 5px grey;
+}
+
+.form-control:hover {
+    box-shadow: 0 0 5px grey;
+}
+
+.header {
+    display: flex;
+    padding: 2rem;
+    width: 100%;
+    background: url("https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.main-heading {
+    text-align: center;
+    color: aliceblue;
+}
+
+.width {
+    width: 540px;
+}
+
+.alert {
+    width: 540px;
+    text-align: center;
+}
+
+.dropdown-menu {
+    padding: 5px;
+    margin: 5px;
+}
