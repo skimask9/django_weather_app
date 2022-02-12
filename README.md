@@ -1,3 +1,3 @@
 # django_weather_app
-Simple weather app using django , openweather api
+Simple weather app on Django.
 Before start you should get yours key for using openweather's api
